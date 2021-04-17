@@ -74,7 +74,7 @@ App = {
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
         App.account = account;
-        $('#accountAddress').html("Your Account: " + account);
+        $('#accountAddress').html("Nr twojego konta w sieci Etherum (Rinkeby) to: " + "<b>" + account + "</b>");
       }
     })
 
@@ -93,7 +93,8 @@ App = {
 
       var progressPercent = (Math.ceil(App.tokensSold) / App.tokensAvailable) * 100;
       $('#progress').css('width', progressPercent + '%');
-      // console.log(progressPercent)
+	  $('#procent').html(Math.round(progressPercent,2));
+      //console.log((Math.round(progressPercent),0))
 
       // Load token contract
       App.contracts.IsoToken.deployed().then(function(instance) {
@@ -104,7 +105,8 @@ App = {
 		   	App.loading = false;
 			loader.hide();
 			content.show();
-    	})
+    	});
+			
    	});
    },
 
