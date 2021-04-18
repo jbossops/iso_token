@@ -31,7 +31,7 @@
 		   </div>	
 	   </div>
 	   
-		<div id="content" class="text-center" style="display: none; padding: 0 10%">
+		<div id="content" class="text-center" style="display: block; padding: 0 10%">
 		<div class="row">
 			<div class="col-md-4">
 				<div class="jumbotron">
@@ -87,15 +87,23 @@
 				  
 				  <br>
 				  
+					<div class="progress">
+						<div id="progress" class="progress-bar progress-bar-striped active" aria-valuemin="0" aria-valuemax="100"><span id="procent"></span>
+						</div>
+					</div>
+				  
+				  
+				  
 				  <div class="btn-group btn-group-justified" role="group" aria-label="...">
 					  <div class="btn-group" role="group">
-						<a href="https://rinkeby.etherscan.io/" class="btn btn-default btn-lg" role="button" aria-disabled="true" >Historia rachunku</a>
+						<a href="#" class="btn btn-default btn-lg" role="button" aria-disabled="true" onclick="myFunction()">Historia rachunku</a>
 					  </div>
 					  
 					  <div class="btn-group" role="group">
-						<a href="https://rinkeby.etherscan.io/" class="btn btn-default btn-lg" role="button" aria-disabled="true">Historia takena</a>
+						<a href="https://rinkeby.etherscan.io/token/0x8f4e4512bd568a0a124dd5a89c34702badc9a8df?a=0x11dd01b3608a5f30de9083e0ac266774e31efd30" target=blank class="btn btn-default btn-lg" role="button" aria-disabled="true">Historia tokena</a>
 					  </div>
 				 </div>
+				 
 				</div>
 			  </form>
 			</div>
@@ -105,14 +113,10 @@
 			  
 			<div class="row">
 			 <div class="col-lg-12">
-			   <div class="progress">
-				<div id="progress" class="progress-bar progress-bar-striped active" aria-valuemin="0" aria-valuemax="100"><span id="procent"></span><div>
-				</div>
-			  </div>
-			  </div>
-			  <h4>Tokeny sprzedane / Tokeny oferowane: <b> <span class="tokens-sold"></span> / <span class="tokens-available"></span></b></h4>
-			  <hr>
+			  <h4>Tokeny sprzedane / Tokeny oferowane: <b> <span class="tokens-sold"></span> / <span class="tokens-available"> </span></b></h4>
+				<hr>
 			  <h4>Nr konta: <span id="accountAddress"></span></h4>
+			 </div>
 			</div>
 			
 		  </div>
@@ -127,8 +131,14 @@
     <script src="js/app.js"></script>
 	<script src="js/eth-price.js"></script>
 	<script>
-		var url_address = new URL("https://rinkeby.etherscan.io/address/", <span id="accountAddress"></span>);
-		window.open("https://www.youraddress.com","_self")
+	function myFunction() {
+			var url_part1 = "https://rinkeby.etherscan.io/address/"
+			var url_part2 = document.getElementById("accountAddress").innerText
+			console.log(url_part2)
+			var url = url_part1 + url_part2
+			window.open(url,'_blank');
+		}
+		
 	</script>
 	
   </body>
