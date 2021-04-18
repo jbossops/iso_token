@@ -1,26 +1,26 @@
-var IsoToken = artifacts.require("./IsoToken.sol");
+var SabaToken = artifacts.require("./SabaToken.sol");
 
 
-contract('IsoToken', function(accounts) {
+contract('SabaToken', function(accounts) {
   var tokenInstance;
 
   it('initializes the contract with the correct values', function() {
-    return IsoToken.deployed().then(function(instance) {
+    return SabaToken.deployed().then(function(instance) {
       tokenInstance = instance;
       return tokenInstance.name();
     }).then(function(name) {
-      assert.equal(name, 'Iso Token', 'has the correct name');
+      assert.equal(name, 'Saba Token', 'has the correct name');
       return tokenInstance.symbol();
     }).then(function(symbol) {
-      assert.equal(symbol, 'ISOT', 'has the correct symbol');
+      assert.equal(symbol, 'SBT', 'has the correct symbol');
       return tokenInstance.standard();
     }).then(function(standard) {
-      assert.equal(standard, 'ISO Token v1.0', 'has the correct standard');
+      assert.equal(standard, 'Saba Token v1.0', 'has the correct standard');
     });
   })
 
   it('allocates the initial supply upon deployment', function() {
-    return IsoToken.deployed().then(function(instance) {
+    return SabaToken.deployed().then(function(instance) {
       tokenInstance = instance;
       return tokenInstance.totalSupply();
     }).then(function(totalSupply) {
@@ -32,7 +32,7 @@ contract('IsoToken', function(accounts) {
   });
 
   it('transfers token ownership', function() {
-    return IsoToken.deployed().then(function(instance) {
+    return SabaToken.deployed().then(function(instance) {
       tokenInstance = instance;
       // Test `require` statement first by transferring something larger than the sender's balance
       return tokenInstance.transfer.call(accounts[1], 250000000000);
@@ -58,7 +58,7 @@ contract('IsoToken', function(accounts) {
   });
 
   it('approves tokens for delegated transfer', function() {
-    return IsoToken.deployed().then(function(instance) {
+    return SabaToken.deployed().then(function(instance) {
       tokenInstance = instance;
       return tokenInstance.approve.call(accounts[1], 100);
     }).then(function(success) {
@@ -77,7 +77,7 @@ contract('IsoToken', function(accounts) {
   });
 
 it('handles delegated token transfers', function() {
-    return IsoToken.deployed().then(function(instance) {
+    return SabaToken.deployed().then(function(instance) {
       tokenInstance = instance;
       fromAccount = accounts[2];
       toAccount = accounts[3];

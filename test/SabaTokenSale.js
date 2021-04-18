@@ -1,7 +1,7 @@
-var IsoToken = artifacts.require('./IsoToken.sol');
-var IsoTokenSale = artifacts.require('./IsoTokenSale.sol');
+var SabaToken = artifacts.require('./SabaToken.sol');
+var SabaTokenSale = artifacts.require('./SabaTokenSale.sol');
 
-contract('IsoTokenSale', function(accounts) {
+contract('SabaTokenSale', function(accounts) {
   var tokenInstance;
   var tokenSaleInstance;
   var admin = accounts[0];
@@ -11,7 +11,7 @@ contract('IsoTokenSale', function(accounts) {
   var numberOfTokens;
 
   it('initializes the contract with the correct values', function() {
-    return IsoTokenSale.deployed().then(function(instance) {
+    return SabaTokenSale.deployed().then(function(instance) {
       tokenSaleInstance = instance;
       return tokenSaleInstance.address
     }).then(function(address) {
@@ -26,10 +26,10 @@ contract('IsoTokenSale', function(accounts) {
   });
 
   it('facilitates token buying', function() {
-    return IsoToken.deployed().then(function(instance) {
+    return SabaToken.deployed().then(function(instance) {
       // Grab token instance first
       tokenInstance = instance;
-      return IsoTokenSale.deployed();
+      return SabaTokenSale.deployed();
     }).then(function(instance) {
       // Then grab token sale instance
       tokenSaleInstance = instance;
@@ -63,10 +63,10 @@ contract('IsoTokenSale', function(accounts) {
   });
 
   it('ends token sale', function() {
-    return IsoToken.deployed().then(function(instance) {
+    return SabaToken.deployed().then(function(instance) {
       // Grab token instance first
       tokenInstance = instance;
-      return IsoTokenSale.deployed();
+      return SabaTokenSale.deployed();
     }).then(function(instance) {
       // Then grab token sale instance
       tokenSaleInstance = instance;

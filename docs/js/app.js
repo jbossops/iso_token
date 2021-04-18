@@ -25,18 +25,18 @@ App = {
   },
 
   initContracts: function() {
-    $.getJSON("contracts/IsoTokenSale.json", function(isoTokenSale) {
-      App.contracts.IsoTokenSale = TruffleContract(isoTokenSale);
-      App.contracts.IsoTokenSale.setProvider(App.web3Provider);
-      App.contracts.IsoTokenSale.deployed().then(function(isoTokenSale) {
-        console.log("Iso Token Sale Address:", isoTokenSale.address);
+    $.getJSON("contracts/SabaTokenSale.json", function(sabaTokenSale) {
+      App.contracts.SabaTokenSale = TruffleContract(sabaTokenSale);
+      App.contracts.SabaTokenSale.setProvider(App.web3Provider);
+      App.contracts.SabaTokenSale.deployed().then(function(sabaTokenSale) {
+        console.log("Saba Token Sale Address:", sabaTokenSale.address);
       });
     }).done(function() {
-      $.getJSON("contracts/IsoToken.json", function(isoToken) {
-        App.contracts.IsoToken = TruffleContract(isoToken);
-        App.contracts.IsoToken.setProvider(App.web3Provider);
-        App.contracts.IsoToken.deployed().then(function(isoToken) {
-          console.log("Iso Token Address:", isoToken.address);
+      $.getJSON("contracts/SabaToken.json", function(sabaToken) {
+        App.contracts.SabaToken = TruffleContract(sabaToken);
+        App.contracts.SabaToken.setProvider(App.web3Provider);
+        App.contracts.SabaToken.deployed().then(function(sabaToken) {
+          console.log("Saba Token Address:", sabaToken.address);
       });
         return App.render();
      });
@@ -45,7 +45,7 @@ App = {
 
   // Listen for events emitted from the contract
   listenForEvents: function() {
-    App.contracts.IsoTokenSale.deployed().then(function(instance) {
+    App.contracts.SabaTokenSale.deployed().then(function(instance) {
       instance.Sell({}, {
         fromBlock: 0,
         toBlock: 'latest',
@@ -74,18 +74,18 @@ App = {
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
         App.account = account;
-        $('#accountAddress').html("Nr twojego konta w sieci Etherum (Rinkeby) to: " + "<b>" + account + "</b>");
+        $('#accountAddress').html("Your Account: " + account);
       }
     })
 
     // Load token sale contract
-    App.contracts.IsoTokenSale.deployed().then(function(instance) {
-      isoTokenSaleInstance = instance;
-      return isoTokenSaleInstance.tokenPrice();
+    App.contracts.SabaTokenSale.deployed().then(function(instance) {
+      SabaTokenSaleInstance = instance;
+      return SabaTokenSaleInstance.tokenPrice();
     }).then(function(tokenPrice) {
       App.tokenPrice = tokenPrice;
       $('.token-price').html(web3.utils.fromWei(App.tokenPrice, "ether"));
-      return isoTokenSaleInstance.tokensSold();
+      return SabaTokenSaleInstance.tokensSold();
     }).then(function(tokensSold) {
       App.tokensSold = tokensSold.toNumber();
       $('.tokens-sold').html(App.tokensSold);
@@ -93,20 +93,18 @@ App = {
 
       var progressPercent = (Math.ceil(App.tokensSold) / App.tokensAvailable) * 100;
       $('#progress').css('width', progressPercent + '%');
-	  $('#procent').html(Math.round(progressPercent,2));
-      //console.log((Math.round(progressPercent),0))
+      // console.log(progressPercent)
 
       // Load token contract
-      App.contracts.IsoToken.deployed().then(function(instance) {
-      	isoTokenInstance = instance;
-      	return isoTokenInstance.balanceOf(App.account);
+      App.contracts.SabaToken.deployed().then(function(instance) {
+      	SabaTokenInstance = instance;
+      	return SabaTokenInstance.balanceOf(App.account);
 	    }).then(function(balance) {
 	      $('.dapp-balance').html(balance.toNumber());  
 		   	App.loading = false;
 			loader.hide();
 			content.show();
-    	});
-			
+    	})
    	});
    },
 
@@ -115,7 +113,7 @@ App = {
     $('#content').hide();
     $('#loader').show();
     var numberOfTokens = $('#numberOfTokens').val();
-    App.contracts.IsoTokenSale.deployed().then(function(instance) {
+    App.contracts.SabaTokenSale.deployed().then(function(instance) {
       return instance.buyTokens(numberOfTokens, {
         from: App.account,
         value: numberOfTokens * App.tokenPrice,

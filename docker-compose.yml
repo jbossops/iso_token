@@ -1,7 +1,7 @@
 web:
   image: nginx
   volumes:
-    - /solidity/token_sale/src:/usr/share/nginx/html
+    - /solidity/token_sale_saba_token/src:/usr/share/nginx/html
   ports:
    - "8080:80"
   command: [nginx-debug, '-g', 'daemon off;']

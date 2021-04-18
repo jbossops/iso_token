@@ -1,0 +1,139 @@
+Migrations dry-run (simulation)
+===============================
+> Network name:    'rinkeby-fork'
+> Network id:      4
+> Block gas limit: 10000000 (0x989680)
+
+
+1_initial_migration.js
+======================
+
+   Replacing 'Migrations'
+   ----------------------
+   > block number:        8433419
+   > block timestamp:     1618735301
+   > account:             0xD13154f31550510776BC53F8157CF190559a10fe
+   > balance:             7.499646114
+   > gas used:            176943 (0x2b32f)
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000353886 ETH
+
+   -------------------------------------
+   > Total cost:         0.000353886 ETH
+
+
+2_deploy_contract.js
+====================
+
+   Deploying 'SabaToken'
+   ---------------------
+   > block number:        8433421
+   > block timestamp:     1618735302
+   > account:             0xD13154f31550510776BC53F8157CF190559a10fe
+   > balance:             7.49815144
+   > gas used:            719999 (0xafc7f)
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001439998 ETH
+
+
+   Deploying 'SabaTokenSale'
+   -------------------------
+   > block number:        8433422
+   > block timestamp:     1618735303
+   > account:             0xD13154f31550510776BC53F8157CF190559a10fe
+   > balance:             7.497114926
+   > gas used:            518257 (0x7e871)
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001036514 ETH
+
+   -------------------------------------
+   > Total cost:         0.002476512 ETH
+
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.002830398 ETH
+
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 10000000 (0x989680)
+
+
+1_initial_migration.js
+======================
+
+   Replacing 'Migrations'
+   ----------------------
+   > transaction hash:    0x9380225d5825ddb0e6aff540e18a9e3c99b0b9eb5c58018bab947b2c8d8488bb
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x57f620e70B6aB246Af79a4A2347fB1B901Da646C
+   > block number:        8433418
+   > block timestamp:     1618735306
+   > account:             0xD13154f31550510776BC53F8157CF190559a10fe
+   > balance:             7.49613514
+   > gas used:            193243 (0x2f2db)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00386486 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00386486 ETH
+
+
+2_deploy_contract.js
+====================
+
+   Deploying 'SabaToken'
+   ---------------------
+   > transaction hash:    0xadff223212829d198a1d5530f31c0585dd8e89771ac3aaac52fe63ccdef3abf6
+   > Blocks: 0            Seconds: 12
+   > contract address:    0x8f4e4512Bd568A0A124Dd5a89c34702BaDc9A8df
+   > block number:        8433420
+   > block timestamp:     1618735336
+   > account:             0xD13154f31550510776BC53F8157CF190559a10fe
+   > balance:             7.4791584
+   > gas used:            803099 (0xc411b)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01606198 ETH
+
+
+   Deploying 'SabaTokenSale'
+   -------------------------
+   > transaction hash:    0xbcc15ab7ab057044b74abd51f674e1ac55b3f2226da607aaeedf0d0ae5663481
+   > Blocks: 0            Seconds: 12
+   > contract address:    0x11dD01b3608a5F30dE9083e0AC266774E31EfD30
+   > block number:        8433421
+   > block timestamp:     1618735351
+   > account:             0xD13154f31550510776BC53F8157CF190559a10fe
+   > balance:             7.46779926
+   > gas used:            567957 (0x8aa95)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01135914 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.02742112 ETH
+
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.03128598 ETH
+

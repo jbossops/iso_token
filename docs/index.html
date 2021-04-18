@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Saba Token (SBN) ICO</title>
+    <title>Saba Token ICO Sale</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
@@ -12,36 +12,47 @@
     <div class="container" style="width: 650px;">
       <div class="row">
         <div class="col-lg-12">
-            <h1 class="text-center">SABA TOKEN (SAT)</h1>
+            <h1 class="text-center">SABA TOKEN ICO SALE</h1>
             <hr/>
             <br/>
         </div>
-		
-	  </div>
-	  <div class="row">
-		<div class="col-12">
-			<div class="alert alert-success" role="alert">
-				<h4 class="alert-heading text-center"> <b> Saba Token (SAT) </b> to kryptowaluta dostępna na sieci testowej <b> Rinkeby </b> projektu Ethereum. Token SAT jest kompatibilny ze standardem <b> ERC20.</b> </h4>
-				<hr>
-				<p class="text-justify">Aby wyśwtlić formularz zakupu tokena SAT należy w przeglądrce Firefox lub Google Chrome zinstalować dodatek Metamask oraz posiadać konto w sieci Rinkeby. Do celów demonstracyjnych poniżej udostępnino klucz prywatny to konta testowego. Konto należy zaimportować wg instrukcji: <a href='https://metamask.zendesk.com/hc/en-us/articles/360015489331-Importing-an-Account' target=blank>INSTRUKCJA</a>.<span class="alert-link">UWAGA! - w sieciach produkcyjnych nigdy nie należy udostępniać kluczy prywatnych<span>.</p>
-				<hr>
-				<p class="mb-0"><span class="alert-link"> Adres konta testowego: </span> 0x09754835f7c5ed6b1dd3456a722ce920b1cf8edf </p>
-				<p class="mb-0"><span class="alert-link"> Klucz prywatny konta testowego: </span> 0x9d8bfec21edbc8480de3c4e56f51a1529cf7834c099e16c7d5fa70f2ae1f9e44 </p>
-				<hr>
-				<p>W celu sprawdzenia salda konta testowego należy użyć narzędzia <a href='https://rinkeby.etherscan.io/' target=blank >Rinkeby Testnet Explorer</a>. W polu Search należy wprowadzić adres konta testowego oraz klinąć klawisz [Search]</p>
-			</div> 
-		</div>
-		   <br/>
-		   
-		<div class="col-12 text-center">
-			<a href="token_sell.html" class="btn btn-primary btn-lg active" role="button">Kup Saba Token</a>
-	    </div>	   
-				
-		
-    </div>
+        <div id="loader">
+          <p class="text-center">Loading...</p>
+        </div>
+        <div id="content" class="text-center" style="display: none;">
+          <p>
+            Introducing "Saba Token" (SBT)!
+            Token price is <span class="token-price"></span> Ether. You currently have <span class="dapp-balance"></span>&nbsp;SBT.
+          </p>
+          <br/>
+          <form onSubmit="App.buyTokens(); return false;" role="form">
+            <div class="form-group">
+              <div class="input-group">
+                <input id="numberOfTokens" class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]">
+                </input>
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary btn-lg">Buy Tokens</button>
+                </span>
+              </div>
+            </div>
+          </form>
+          <br>
+           <div class="progress">
+            <div id="progress" class="progress-bar progress-bar-striped active" aria-valuemin="0" aria-valuemax="100"
+            > 
+          </div>
+          </div>
+          <p><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold</p>
+          <hr>
+          <p id="accountAddress"></p>
+        </div>
+      </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.min.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>
